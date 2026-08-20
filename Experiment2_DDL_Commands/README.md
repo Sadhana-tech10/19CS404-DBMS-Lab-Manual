@@ -104,124 +104,202 @@ CREATE TABLE Table_Name (
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+Write a SQL query to Add a new column Mobilenumber as number in the Student_details table.
 
-```sql
--- Paste your SQL code below for Question 1
+Sample table: Student_details
+
+ cid              name             type             notnu  dflt_value  pk
+---------------  ---------------  ---------------  -----  ----------  ----------
+0                RollNo           int              0                  1
+1                Name             VARCHAR(100)     1                  0
+2                Gender           TEXT             1                  0
+3                Subject          VARCHAR(30)      0                  0
+4                MARKS            INT (3)          0                  0
+
 ```
-
+ALTER TABLE Student_details
+ADD Mobilenumber number;
+```
 **Output:**
+<img width="1217" height="409" alt="image" src="https://github.com/user-attachments/assets/809a21d7-1525-41a6-8fa7-053b7f4705a7" />
 
-![Output1](output.png)
 
 **Question 2**
----
--- Paste Question 2 here
+Insert all products from Discontinued_products into Products.
 
-```sql
--- Paste your SQL code below for Question 2
+Table attributes are ProductID, ProductName, Price, Stock
+
+```
+INSERT INTO Products(ProductID,ProductName,Price,Stock)
+SELECT ProductID,ProductName,Price,Stock
+FROM Discontinued_products;
 ```
 
 **Output:**
-
-![Output2](output.png)
+<img width="1221" height="349" alt="image" src="https://github.com/user-attachments/assets/2fb14ab4-c32a-43c4-baca-4cf61f9f58db" />
 
 **Question 3**
----
--- Paste Question 3 here
+Write a SQL query to add birth_date attribute as timestamp (datatype) in the table customer 
 
-```sql
--- Paste your SQL code below for Question 3
+Sample table: customer
+
+ customer_id |   cust_name    |    city    | grade | salesman_id 
+-------------+----------------+------------+-------+-------------
+        3002 | Nick Rimando   | New York   |   100 |        5001
+        3007 | Brad Davis     | New York   |   200 |        5001
+        3005 | Graham Zusi    | California |   200 |        5002
+ 
+
+
+
+```
+ALTER TABLE customer
+ADD COLUMN birth_date timestamp;
 ```
 
 **Output:**
+<img width="1222" height="438" alt="image" src="https://github.com/user-attachments/assets/198a47be-db0b-4fad-897e-9d2702c9ba3f" />
 
-![Output3](output.png)
 
 **Question 4**
----
--- Paste Question 4 here
+Insert all employees from Former_employees into Employee
 
-```sql
--- Paste your SQL code below for Question 4
+Table attributes are EmployeeID, Name, Department, Salary
+
+
+
+```
+INSERT INTO Employee(EmployeeID,Name,Department,Salary)
+SELECT EmployeeID,Name,Department,Salary
+FROM Former_employees;
 ```
 
 **Output:**
-
-![Output4](output.png)
+<img width="1220" height="338" alt="image" src="https://github.com/user-attachments/assets/fdddf334-553f-4544-9db5-c2ae1fb9938c" />
 
 **Question 5**
----
--- Paste Question 5 here
+Insert the following customers into the Customers table:
 
-```sql
--- Paste your SQL code below for Question 5
+CustomerID  Name         Address     City        ZipCode
+----------  -----------  ----------  ----------  ----------
+302         Laura Croft  456 Elm St  Seattle     98101
+303         Bruce Wayne  789 Oak St  Gotham      10001
+
+```
+INSERT INTO Customers(CustomerID,Name,Address,City,Zipcode)
+VALUES
+(302,'Laura Croft','456 Elm St','Seattle',98101),
+(303,'Bruce Wayne','789 Oak St','Gotham',10001);
 ```
 
 **Output:**
+<img width="1280" height="442" alt="image" src="https://github.com/user-attachments/assets/536c8c67-0165-4d74-a3ba-1c63cee9e05b" />
 
-![Output5](output.png)
 
 **Question 6**
----
--- Paste Question 6 here
+Create a table named Employees with the following constraints:
 
-```sql
--- Paste your SQL code below for Question 6
+EmployeeID should be the primary key.
+FirstName and LastName should be NOT NULL.
+Email should be unique.
+Salary should be greater than 0.
+DepartmentID should be a foreign key referencing the Departments table.
 ```
-
+CREATE TABLE Employees(
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Salary DECIMAL(10,2) CHECK (salary > 0),
+    DepartmentID INT NOT NULL,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+```
 **Output:**
+<img width="1214" height="503" alt="image" src="https://github.com/user-attachments/assets/0ba8d14b-457c-43af-bf57-2216e03aacbc" />
 
-![Output6](output.png)
+
 
 **Question 7**
----
--- Paste Question 7 here
+Create a table named Invoices with the following constraints:
 
-```sql
--- Paste your SQL code below for Question 7
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+DueDate as DATE should be greater than the InvoiceDate.
+Amount as REAL should be greater than 0.
+
 ```
-
+CREATE TABLE Invoices (
+    InvoiceID INTEGER PRIMARY KEY,
+    InvoiceDate DATE,
+    DueDate DATE,
+    Amount REAL,
+    
+    CHECK (DueDate > InvoiceDate),
+    CHECK (Amount > 0)
+);
+```
 **Output:**
 
-![Output7](output.png)
+<img width="1215" height="354" alt="image" src="https://github.com/user-attachments/assets/ddc309a5-16ac-4750-9b2a-9c2f14db9e84" />
+
 
 **Question 8**
----
--- Paste Question 8 here
+Create a table named Orders with the following columns:
 
-```sql
--- Paste your SQL code below for Question 8
+OrderID as INTEGER
+OrderDate as TEXT
+CustomerID as INTEGER
+```
+CREATE TABLE Orders(
+    OrderID INTEGER ,
+    OrderDate TEXT,
+    CustomerID INTEGER
+);
 ```
 
 **Output:**
-
-![Output8](output.png)
+<img width="1227" height="440" alt="image" src="https://github.com/user-attachments/assets/184507f7-e83a-4ad0-8977-697a0b39e745" />
 
 **Question 9**
----
--- Paste Question 9 here
+Create a table named Customers with the following columns:
 
-```sql
--- Paste your SQL code below for Question 9
+CustomerID as INTEGER
+Name as TEXT
+Email as TEXT
+JoinDate as DATETIME
+```
+CREATE TABLE Customers(
+    CustomerID INTEGER,
+    Name TEXT,
+    Email TEXT,
+    JoinDate DATETIME
+);
 ```
 
 **Output:**
+<img width="1242" height="475" alt="image" src="https://github.com/user-attachments/assets/7e2b82d5-fa25-461f-9656-a28a7abd6032" />
 
-![Output9](output.png)
 
 **Question 10**
----
--- Paste Question 10 here
+Create a table named Events with the following columns:
 
-```sql
--- Paste your SQL code below for Question 10
+EventID as INTEGER
+EventName as TEXT
+EventDate as DATE
+
 ```
+CREATE TABLE Events(
+    EventID INTEGER,
+    EventName TEXT,
+    EventDate DATE
+);
 
+```
 **Output:**
+<img width="1251" height="438" alt="image" src="https://github.com/user-attachments/assets/9cd91459-003d-413d-8c99-18671ea51822" />
 
-![Output10](output.png)
+
 
 
 ## RESULT
