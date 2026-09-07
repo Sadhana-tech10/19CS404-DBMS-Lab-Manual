@@ -38,123 +38,230 @@ DROP VIEW view_name;
 
 **Question 1**
 --
--- Paste Question 1 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is LESS than $2500.
 
+Sample table: CUSTOMERS
+
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+
+1          Ramesh     32              Ahmedabad     2000
+2          Khilan        25              Delhi                 1500
+3          Kaushik      23              Kota                  2000
+4          Chaitali       25             Mumbai            6500
+5          Hardik        27              Bhopal              8500
+6          Komal         22              Hyderabad       4500
+
+7           Muffy          24              Indore            10000
 ```sql
--- Paste your SQL code below for Question 1
+select *from CUSTOMERS WHERE SALARY < 2500;
 ```
 
 **Output:**
+<img width="1231" height="533" alt="image" src="https://github.com/user-attachments/assets/f0d2d28f-a4cd-4bf6-a6b5-207db8eb76f1" />
 
-![Output1](output.png)
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL query to Retrieve the names and cities of customers who have the same city as customers with IDs 3 and 7
 
+SAMPLE TABLE: customer
+
+name             type
+---------------  ---------------
+id               INTEGER
+name             TEXT
+city             TEXT
+email            TEXT
+phone            INTEGER
 ```sql
--- Paste your SQL code below for Question 2
+SELECT name,city from customer where city in (select city from customer where id in (3,7));
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="605" height="552" alt="image" src="https://github.com/user-attachments/assets/4665a7be-2582-4fd7-a44b-d64012558b89" />
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write a query to display all the customers whose ID is the difference between the salesperson ID of Mc Lyon and 2001.
 
+salesman table
+
+name             type
+---------------  ---------------
+salesman_id      numeric(5)
+name                 varchar(30)
+city                    varchar(15)
+commission       decimal(5,2)
+
+customer table
+
+name         type
+-----------  ----------
+customer_id  int
+cust_name    text
+city         text
+grade        int
+salesman_id  int
+ 
 ```sql
--- Paste your SQL code below for Question 3
+select *from customer where customer_id=(select salesman_id-2001 from salesman where name = 'Mc Lyon');
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1211" height="402" alt="image" src="https://github.com/user-attachments/assets/9fd5a6c8-3233-414f-ad3b-509759151640" />
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose AGE is LESS than $30
 
+Sample table: CUSTOMERS
+
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+
+1          Ramesh     32              Ahmedabad     2000
+2          Khilan        25              Delhi                 1500
+3          Kaushik      23              Kota                  2000
+4          Chaitali       25             Mumbai            6500
+5          Hardik        27              Bhopal              8500
+6          Komal         22              Hyderabad       4500
+
+7           Muffy          24              Indore            10000
 ```sql
--- Paste your SQL code below for Question 4
+select *from CUSTOMERS WHERE AGE < 30;
 ```
 
 **Output:**
-
-![Output4](output.png)
+<img width="1223" height="640" alt="image" src="https://github.com/user-attachments/assets/d7397e05-342d-4796-8a93-b5261015961a" />
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is EQUAL TO $1500.
 
+Sample table: CUSTOMERS
+
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+
+1          Ramesh     32              Ahmedabad     2000
+2          Khilan        25              Delhi                 1500
+3          Kaushik      23              Kota                  2000
+4          Chaitali       25             Mumbai            6500
+5          Hardik        27              Bhopal              8500
+6          Komal         22              Hyderabad       4500
+
+7           Muffy          24              Indore            10000
 ```sql
--- Paste your SQL code below for Question 5
+SELECT *FROM CUSTOMERS WHERE SALARY=1500;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1216" height="457" alt="image" src="https://github.com/user-attachments/assets/dd6fd9fe-9591-4f05-8c7f-361b9f43a93c" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to retrieve all columns from the CUSTOMERS table for customers whose salary is greater than $4500.
 
+Sample table: CUSTOMERS
+
+ID          NAME        AGE         ADDRESS     SALARY
+----------  ----------  ----------  ----------  ----------
+
+1          Ramesh     32              Ahmedabad     2000
+2          Khilan        25              Delhi                 1500
+3          Kaushik      23              Kota                  2000
+4          Chaitali       25             Mumbai            6500
+5          Hardik        27              Bhopal              8500
+6          Komal         22              Hyderabad       4500
+
+7           Muffy          24              Indore            10000
 ```sql
--- Paste your SQL code below for Question 6
+SELECT *FROM CUSTOMERS WHERE SALARY > 4500;
 ```
 
 **Output:**
-
-![Output6](output.png)
+<img width="1287" height="497" alt="image" src="https://github.com/user-attachments/assets/cd3da581-1ab3-4c10-a42d-8c07e3248815" />
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to Retrieve the medications with dosages equal to the lowest dosage
+
+Medications Table
+
+
+
+For example:
+
+Result
+medic  medication_name  dosage
+-----  ---------------  ---------------
+2      Ibuprofen        200mg
 
 ```sql
--- Paste your SQL code below for Question 7
+SELECT *FROM Medications WHERE dosage = (select min(dosage) from Medications)
 ```
 
 **Output:**
+<img width="886" height="467" alt="image" src="https://github.com/user-attachments/assets/94427ef2-fd1f-4374-97fd-e46c92a8e72a" />
 
-![Output7](output.png)
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write a SQL query that retrieves the names of students and their corresponding grades, where the grade is equal to the maximum grade achieved in each subject.
+
+Sample table: GRADES
+
+
 
 ```sql
--- Paste your SQL code below for Question 8
+select student_name,grade from GRADES g where grade=(select max(grade)
+from GRADES where subject=g.subject)
 ```
 
 **Output:**
+<img width="777" height="516" alt="image" src="https://github.com/user-attachments/assets/85971a23-7d14-41d9-9c81-faca8ef24e27" />
 
-![Output8](output.png)
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write a SQL query to Identify customers whose city is different from the city of the customer with the highest ID
 
+SAMPLE TABLE: customer
+
+name             type
+---------------  ---------------
+id               INTEGER
+name             TEXT
+city             TEXT
+email            TEXT
+phone            INTEGER
 ```sql
--- Paste your SQL code below for Question 9
+select *from customer where city != (select city from customer where id=(select max(id) from customer));
 ```
 
 **Output:**
+<img width="1225" height="585" alt="image" src="https://github.com/user-attachments/assets/5e81d276-811a-446d-b48d-06220c912dbd" />
 
-![Output9](output.png)
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a SQL query to Retrieve the medications with dosages equal to the highest dosage
+
+Medications Table
+
 
 ```sql
--- Paste your SQL code below for Question 10
+select *from Medications where dosage= (select max(dosage) from Medications);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="922" height="496" alt="image" src="https://github.com/user-attachments/assets/c4e68394-8a01-470f-ac98-f3607ce1e461" />
 
 
 ## RESULT
